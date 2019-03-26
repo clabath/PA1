@@ -1,7 +1,8 @@
 /**
  * Team members:
- * @author John Doe
- * @author Jane Doe
+ * @author Kyle Bowden
+ * @author Kyle Trom
+ * @author Cass Labath
  * 
  * RBTree class, maintains operations on RBTree.
  */
