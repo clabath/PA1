@@ -2,7 +2,7 @@
  * Team members:
  * @author Kyle Bowden
  * @author Kyle Trom
- * @author Cass Labath
+ * @author Cassandra Labath
  * 
  * RBTree class, maintains operations on RBTree.
  */

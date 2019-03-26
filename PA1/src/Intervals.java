@@ -4,7 +4,7 @@ import java.util.Arrays;
  * Team members:
  * @author Kyle Bowden
  * @author Kyle Trom
- * @author Cass Labath
+ * @author Cassandra Labath
  * 
  * A wrapper class for RBTree
  */

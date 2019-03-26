@@ -2,7 +2,7 @@
  * Team members:
  * @author Kyle Bowden
  * @author Kyle Trom
- * @author Cass Labath
+ * @author Cassandra Labath
  * 
  * Endpoint class for Node.
  */
