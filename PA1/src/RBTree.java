@@ -33,6 +33,9 @@ public class RBTree {
 	 */
 	public Node getNILNode() {
 		nil = new Node(-1,-1);
+		nil.setColor(1);
+		nil.getVal();
+		nil.getMaxVal();
 		return nil;
 	}
 	
@@ -64,7 +67,7 @@ public class RBTree {
 		return true;
 	}
 	
-	public boolean removeNode(Node node){    // removes node, returns true if successful;
+	public boolean removeNode(Node node){    // removes node, returns true if successful; //Can probably remove this
 		
 		size--;
 		return true;

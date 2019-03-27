@@ -68,7 +68,7 @@ public class Node {            //the node represents an endpoint
 	 * @return
 	 */
 	public int getVal() {
-		if(key.getValue() < 0) {
+		if(getKey() < 0) {
 			val = 0;
 		} else {
 			val = left.val + p + right.val;
@@ -77,11 +77,11 @@ public class Node {            //the node represents an endpoint
 	}
 	
 	/**
-	 * Returns themaxvalof the node as described in this assignment.
+	 * Returns the maxval of the node as described in this assignment.
 	 * @return
 	 */
 	public int getMaxVal() {
-		if (key.getValue() < 0) {
+		if (getKey() < 0) {
 			maxval = 0;
 		} else {
 			maxval = Math.max(left.maxval, Math.max(left.val + p, left.val + p + right.maxval));
@@ -104,7 +104,9 @@ public class Node {            //the node represents an endpoint
 	 * @return
 	 */
 	public Endpoint getEmax() {
-		if(Math.max(left.maxval, Math.max(left.maxval + p, left.maxval + p + right.maxval)) == left.maxval) {
+		if (getKey() < 0) {
+			emax = key;
+		} else if(Math.max(left.maxval, Math.max(left.maxval + p, left.maxval + p + right.maxval)) == left.maxval) {
 			emax = left.key;
 		} else if (Math.max(left.maxval, Math.max(left.maxval + p, left.maxval + p + right.maxval)) == (left.maxval + p)){
 			emax = key;
