@@ -81,6 +81,11 @@ public class Node {            //the node represents an endpoint
 	 * @return
 	 */
 	public int getMaxVal() {
+		if (nil) {
+			maxval = 0;
+		} else {
+			maxval = Math.max(left.maxval, Math.max(left.val + p, left.val + p + right.maxval));
+		}
 		return maxval;
 	}
 	
@@ -99,6 +104,13 @@ public class Node {            //the node represents an endpoint
 	 * @return
 	 */
 	public Endpoint getEmax() {
+		if(Math.max(left.maxval, Math.max(left.maxval + p, left.maxval + p + right.maxval)) == left.maxval) {
+			emax = left.key;
+		} else if (Math.max(left.maxval, Math.max(left.maxval + p, left.maxval + p + right.maxval)) == (left.maxval + p)){
+			emax = key;
+		} else {
+			emax = right.key;
+		}
 		return emax;
 	}
 	
