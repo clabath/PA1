@@ -12,12 +12,11 @@ public class Intervals {
 	//private int ID = 0; If deletion is done, this could be used to keep track of edpoints
 	//                    for the same interval.
 	
-	int[][] intervals;
 	/**
 	 * Constructor with no parameters.
 	 */
 	public Intervals() {
-		intervals = new int[0][2]; //interval array of length 0 where the size of each 1D array is 2.
+		//TODO
 	}
 	
 	/**
@@ -35,8 +34,6 @@ public class Intervals {
 	 */
 	//as of right now the ID is equal to the index + 1
 	void intervalInsert(int a, int b) {
-		intervals[intervals.length][0] = a;
-		intervals[intervals.length][1] = b;
 		//why should this run in O(logn) timne what am i missing
 		//also this is a dynamic array so every time I update it it is copying the whole array O(n)
 		//oh shit i'm a stupid this is where we use the BST
