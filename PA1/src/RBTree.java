@@ -18,6 +18,7 @@ public class RBTree {
 		nil = Node.createNILNode();
 		root = nil;
 		size = 0;
+		height = 0;
 	}
 	
 	/**
@@ -50,8 +51,22 @@ public class RBTree {
 	 * @return
 	 */
 	public int getHeight() {
+		height = findHeight(root);
 		return height;
 	}
+	
+	//Naive method to find height of the tree based on recursion
+	private int findHeight(Node node) {
+		if (node == null) 
+            return 0; 
+        else 
+        { 
+            int l = findHeight(node.getLeft()); 
+            int r = findHeight(node.getRight()); 
+            //Find which height is greatest and return
+            return Math.max(l, r) + 1;
+        } 
+    }
 	
 	public boolean isEmpty() {
 		return root == nil;
@@ -141,7 +156,7 @@ public class RBTree {
 	}
 	
 	public boolean removeNode(Node node){    // removes node, returns true if successful; //Can probably remove this
-		
+		//Todo: 
 		size--;
 		return true;
 	}
