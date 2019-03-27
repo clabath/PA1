@@ -32,6 +32,7 @@ public class RBTree {
 	 * @return
 	 */
 	public Node getNILNode() {
+		nil = new Node(-1,-1);
 		return nil;
 	}
 	
