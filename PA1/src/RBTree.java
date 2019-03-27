@@ -85,6 +85,12 @@ public class RBTree {
 		node.setColor(0);
 		size++;
 		insertFixup(node);
+		if(root.getRight() == null)
+		{
+			root.setRight(nil);
+		} else if(root.getLeft() == null) {
+			root.setLeft(nil);
+		}
 		return;
 	}
 	

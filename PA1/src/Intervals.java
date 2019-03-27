@@ -12,11 +12,14 @@ public class Intervals {
 	//private int ID = 0; If deletion is done, this could be used to keep track of edpoints
 	//                    for the same interval.
 	int nextID = 1;
+	RBTree rbt;
+	
 	/**
 	 * Constructor with no parameters.
 	 */
 	public Intervals() {
 		//TODO
+		rbt = new RBTree();
 	}
 	
 	/**
@@ -69,8 +72,7 @@ public class Intervals {
 	 * @return
 	 */
 	RBTree getRBTree() {
-		//TODO: Modify it accordingly.
-		return null;
+		return rbt;
 	}
 	
 	
@@ -83,38 +85,13 @@ public class Intervals {
 	 * @param args
 	 */
 	public static void main(String [] args) {
-//		int points[][] = {{0, 4}, {1, 6}, {3, 9}, {7, 11}};
-//		Intervals intv = new Intervals();
-//		
-//		for(int i=0; i<points.length; i++) {
-//			//System.out.println("Inserting: "+ Arrays.toString(points[i]));
-//			intv.intervalInsert(points[i][0], points[i][1]);
-//		}
-//		System.out.println("POM is: "+ intv.findPOM()); //Should return 3.
-		RBTree rbt = new RBTree();
-		Node left = new Node(0,1, 1);
-		Node right = new Node(3,1, 1);
-		Node node = new Node(1,1, 1);
-		left.setLeft(rbt.getNILNode());
-		left.setRight(rbt.getNILNode());
-		left.setParent(node);
-		right.setLeft(rbt.getNILNode());
-		right.setRight(rbt.getNILNode());
-		right.setParent(node);
-		node.setLeft(left);
-		node.setRight(right);
-		node.setParent(rbt.getNILNode());
-		left.getVal();
-		left.getMaxVal();
-		left.getEmax();
-		right.getVal();
-		right.getMaxVal();
-		right.getEmax();left.getVal();
-		node.getVal();
-		node.getMaxVal();
-		node.getEmax();
-		System.out.println("left val is:" + left.getVal() + "   left maxval is:" + left.getMaxVal() + "   left emax is at key:" + left.getEmax().getValue());
-		System.out.println("right val is:" + right.getVal() + "   right maxval is:" + right.getMaxVal() + "   right emax is at key:" + right.getEmax().getValue());
-		System.out.println("node val is:" + node.getVal() + "   node maxval is:" + node.getMaxVal() + "   node emax is at key:" + node.getEmax().getValue());
+		int points[][] = {{0, 4}, {1, 6}, {3, 9}, {7, 11}};
+		Intervals intv = new Intervals();
+		
+		for(int i=0; i<points.length; i++) {
+			System.out.println("Inserting: "+ Arrays.toString(points[i]));
+			intv.intervalInsert(points[i][0], points[i][1]);
+		}
+		System.out.println("POM is: "+ intv.findPOM()); //Should return 3.
 	}
 }
