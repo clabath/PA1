@@ -8,7 +8,7 @@
  */
 public class Node {            //the node represents an endpoint
 	private Endpoint key;                   //the endpoint(assumed positive integers unless nil node)
-	private int p;                     //TODO p is a boolean of either +1 or -1 (may need to be changed talk to me)
+	private int p;                     //+1 if right endpoint or -1 if left
 	private Node parent, left, right;  //variables for the node's location in tree
 	private enum Color {RED, BLACK};   //color of the nodes
 	private Color color; 
@@ -24,7 +24,7 @@ public class Node {            //the node represents an endpoint
 	}
 	/**
 	 * Returns the parent of this node.
-	 * @return 
+	 * @return this.parent
 	 */
 	public Node getParent() { 
 		return parent; 				//returns the parent. if root, returns null
@@ -32,7 +32,7 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Returns the left child.
-	 * @return
+	 * @return this.left
 	 */
 	public Node getLeft() {
 		return left;
@@ -40,7 +40,7 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Returns the right child.
-	 * @return
+	 * @return this.right
 	 */
 	public Node getRight() {
 		return right;
@@ -48,7 +48,7 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Returns the endpoint value, which is an integer.
-	 * @return
+	 * @return this.key.value
 	 */
 	public int getKey() {
 		return key.getValue();
@@ -56,7 +56,7 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Returns the value of the functionpbased on this endpoint.
-	 * @return
+	 * @return this.p
 	 */
 	public int getP() {
 		return p;
@@ -64,7 +64,7 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Returns the val of the node as described in this assignment.
-	 * @return
+	 * @return this.val
 	 */
 	public int getVal() {
 		if(getKey() < 0) {
@@ -77,7 +77,7 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Returns the maxval of the node as described in this assignment.
-	 * @return
+	 * @return this.maxval
 	 */
 	public int getMaxVal() {
 		if (getKey() < 0) {
@@ -90,7 +90,7 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Returns theEndpointobject that this node represents.
-	 * @return
+	 * @return this.key
 	 */
 	public Endpoint getEndpoint() {
 		return key;
@@ -100,7 +100,7 @@ public class Node {            //the node represents an endpoint
 	 * Returns anEndpointobject that represents emax. 
 	 * Calling this method on the root node will give the End point object whose getValue() 
 	 * provides a point of maximum overlap.
-	 * @return
+	 * @return this.emax
 	 */
 	public Endpoint getEmax() {
 		if (getKey() < 0) {
@@ -117,33 +117,55 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Returns 0 if red. Returns 1 if black.
-	 * @return
+	 * @return 0 or 1
 	 */
 	public int getColor() {
 		return color.ordinal();
 	}
 	
 	//Add more functions as  you see fit. 
+	
+	/**
+	 * Sets this.parent to the Node in the parameter
+	 * @param parent
+	 */
 	public void setParent(Node parent) // sets the parent of this node to a given node
 	{
 		this.parent = parent;
 
 	}
+	
+	/**
+	 * Sets this.right to the Node in the parameter
+	 * @param right
+	 */
 	public void setRight(Node right) // sets the right child of this node to a given node
 	{
 		this.right = right;
 	}
 	
+	/**
+	 * Sets this.left to the Node in the parameter
+	 * @param left
+	 */
 	public void setLeft(Node left) // sets the left child of this node to a given node
 	{
 		this.left = left;
 	}
 	
+	/**
+	 * sets color to RED or Black
+	 * @param color
+	 */
 	public void setColor(Color color) //setting color with enum
 	{
 		this.color = color;
 	}
 	
+	/**
+	 * sets color to RED (1)or BLACK (0)
+	 * @param color
+	 */
 	public void setColor(int color) // setting color with 0/1 as arguments
 	{
 		if (color == 0)
@@ -156,7 +178,7 @@ public class Node {            //the node represents an endpoint
 	
 	/**
 	 * Creates a new nil node with p = -1, key = -1, val = 0, maxval = 0 and emax = key of -1
-	 * @return
+	 * @return 
 	 */
 	public static Node createNILNode() {
 		Node nil = new Node(-1,-1);
