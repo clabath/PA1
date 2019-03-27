@@ -7,15 +7,14 @@
  * Node class for RBTree.
  */
 public class Node {            //the node represents an endpoint
-	Endpoint key;                   //the endpoint(assumed positive integers unless nil node)
-	int p;                     //TODO p is a boolean of either +1 or -1 (may need to be changed talk to me)
-	Node parent, left, right;  //variables for the node's location in tree
-	enum Color {RED, BLACK};   //color of the nodes
-	Color color; 
-	int leftmost, rightmost;   //indicies of leftmost and rightmost endpoints in subtree rooted at v
-	int val;                   //sum of p-values of nodes in the subtree rooted at v (including v)
-	int maxval;                //TODO maximum value obtained by s(leftmost, i) for leftmost <= i <= rightmost TALK TO ME ABOUT THIS I HAVE CONCERNS
-	Endpoint emax;                  //the key (endpoint) that maximizes s(leftmost, i) for leftmost <= i <= rightmost 
+	private Endpoint key;                   //the endpoint(assumed positive integers unless nil node)
+	private int p;                     //TODO p is a boolean of either +1 or -1 (may need to be changed talk to me)
+	private Node parent, left, right;  //variables for the node's location in tree
+	private enum Color {RED, BLACK};   //color of the nodes
+	private Color color; 
+	private int val;                   //sum of p-values of nodes in the subtree rooted at v (including v)
+	private int maxval;                //TODO maximum value obtained by s(leftmost, i) for leftmost <= i <= rightmost TALK TO ME ABOUT THIS I HAVE CONCERNS
+	private Endpoint emax;                  //the key (endpoint) that maximizes s(leftmost, i) for leftmost <= i <= rightmost 
 
 	
 	public Node(int key, int p) //TODO this is probably not right, just setting something up right now

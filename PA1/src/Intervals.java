@@ -115,8 +115,8 @@ public class Intervals {
 		node.getVal();
 		node.getMaxVal();
 		node.getEmax();
-		System.out.println("left val is:" + left.val + "   left maxval is:" + left.maxval + "   left emax is at key:" + left.emax.getValue());
-		System.out.println("right val is:" + right.val + "   right maxval is:" + right.maxval + "   right emax is at key:" + right.emax.getValue());
-		System.out.println("node val is:" + node.val + "   node maxval is:" + node.maxval + "   node emax is at key:" + node.emax.getValue());
+		System.out.println("left val is:" + left.getVal() + "   left maxval is:" + left.getMaxVal() + "   left emax is at key:" + left.getEmax().getValue());
+		System.out.println("right val is:" + right.getVal() + "   right maxval is:" + right.getMaxVal() + "   right emax is at key:" + right.getEmax().getValue());
+		System.out.println("node val is:" + node.getVal() + "   node maxval is:" + node.getMaxVal() + "   node emax is at key:" + node.getEmax().getValue());
 	}
 }
