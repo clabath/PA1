@@ -6,15 +6,28 @@
  * 
  * Node class for RBTree.
  */
-public class Node {
+public class Node {            //the node represents an endpoint
+	Endpoint key;                   //the endpoint(assumed positive integers unless nil node)
+	int p;                     //TODO p is a boolean of either +1 or -1 (may need to be changed talk to me)
+	Node parent, left, right;  //variables for the node's location in tree
+	enum Color {RED, BLACK};   //color of the nodes
+	Color color; 
+	int leftmost, rightmost;   //indicies of leftmost and rightmost endpoints in subtree rooted at v
+	int val;                   //sum of p-values of nodes in the subtree rooted at v (including v)
+	int maxval;                //TODO maximum value obtained by s(leftmost, i) for leftmost <= i <= rightmost TALK TO ME ABOUT THIS I HAVE CONCERNS
+	Endpoint emax;                  //the key (endpoint) that maximizes s(leftmost, i) for leftmost <= i <= rightmost 
 	
+	public Node(int key, int p) //TODO this is probably not right, just setting something up right now
+	{
+		this.key = new Endpoint(key);
+		this.p = p;
+	}
 	/**
 	 * Returns the parent of this node.
-	 * @return
+	 * @return 
 	 */
-	public Node getParent() {
-		//TODO: Modify it accordingly.
-		return null;
+	public Node getParent() { 
+		return parent; 				//returns the parent. if root, returns null
 	}
 	
 	/**
@@ -22,8 +35,7 @@ public class Node {
 	 * @return
 	 */
 	public Node getLeft() {
-		//TODO: Modify it accordingly.
-		return null;
+		return left;
 	}
 	
 	/**
@@ -31,8 +43,7 @@ public class Node {
 	 * @return
 	 */
 	public Node getRight() {
-		//TODO: Modify it accordingly.
-		return null;
+		return right;
 	}
 	
 	/**
@@ -40,8 +51,7 @@ public class Node {
 	 * @return
 	 */
 	public int getKey() {
-		//TODO: Modify it accordingly.
-		return 0;
+		return key.getValue();
 	}
 	
 	/**
@@ -49,8 +59,7 @@ public class Node {
 	 * @return
 	 */
 	public int getP() {
-		//TODO: Modify it accordingly.
-		return 0;
+		return p;
 	}
 	
 	/**
@@ -58,8 +67,7 @@ public class Node {
 	 * @return
 	 */
 	public int getVal() {
-		//TODO: Modify it accordingly.
-		return 0;
+		return val;
 	}
 	
 	/**
@@ -67,8 +75,7 @@ public class Node {
 	 * @return
 	 */
 	public int getMaxVal() {
-		//TODO: Modify it accordingly.
-		return 0;
+		return maxval;
 	}
 	
 	/**
@@ -76,8 +83,7 @@ public class Node {
 	 * @return
 	 */
 	public Endpoint getEndpoint() {
-		//TODO: Modify it accordingly.
-		return null;
+		return key;
 	}
 	
 	/**
@@ -87,8 +93,7 @@ public class Node {
 	 * @return
 	 */
 	public Endpoint getEmax() {
-		//TODO: Modify it accordingly.
-		return null;
+		return emax;
 	}
 	
 	/**
@@ -96,9 +101,47 @@ public class Node {
 	 * @return
 	 */
 	public int getColor() {
-		//TODO: Modify it accordingly.
-		return 0;
+		return color.ordinal();
 	}
 	
-	//Add more functions as  you see fit.
+	//Add more functions as  you see fit. 
+	public void setParent(Node parent) // sets the parent of this node to a given node
+	{
+		this.parent = parent;
+
+	}
+	public void setRight(Node right) // sets the right child of this node to a given node
+	{
+		this.right = right;
+	}
+	
+	public void setLeft(Node left) // sets the left child of this node to a given node
+	{
+		this.left = left;
+	}
+	
+	public void setColor(Color color) //setting color with enum
+	{
+		this.color = color;
+	}
+	
+	public void setColor(int color) // setting color with 0/1 as arguments
+	{
+		if (color == 0)
+			this.color = Color.RED;
+		else if (color == 1)
+			this.color = Color.BLACK;
+		else 
+			throw new IllegalArgumentException("setColor ONLY ACCEPTS 0 AND 1 AS ARGUMENTS");
+	}
+	
+	
+	
+	
+	
+	//TODO I believe more functions should be evaluating the 
+	//	   the values of the functions (p, emax) but we may just 
+	//	   calculate them in the get methods
+	
+	
 }

@@ -7,12 +7,16 @@
  * RBTree class, maintains operations on RBTree.
  */
 public class RBTree {
-	
+	private Node root; 
+	private Node nil; //this is the nil node, don't know how to use it yet
+	private int size, height; //variables to store the size and the height of the tree
 	/**
 	 * RB Tree constructor. It initializes nil node as well.
 	 */
 	public RBTree() {
-		//TODO: Add code as needed.
+		root = null;
+		size = 0;
+							//have to initialize nil node --- return later
 	}
 	
 	/**
@@ -20,8 +24,7 @@ public class RBTree {
 	 * @return
 	 */
 	public Node getRoot() {
-		//TODO: Modify it accordingly.
-		return null;
+		return root;
 	}
 	
 	/**
@@ -29,17 +32,15 @@ public class RBTree {
 	 * @return
 	 */
 	public Node getNILNode() {
-		//TODO: Modify it accordingly.
-		return null;
+		return nil;
 	}
 	
 	/**
 	 * Returns the number of internal nodes in the tree.
-	 * @return
+	 * @return 
 	 */
 	public int getSize() {
-		//TODO: Modify it accordingly.
-		return 0;
+		return size;
 	}
 	
 	
@@ -48,9 +49,27 @@ public class RBTree {
 	 * @return
 	 */
 	public int getHeight() {
-		//TODO: Modify it accordingly.
-		return 0;
+		return height;
 	}
+	
+	public boolean isEmpty() {
+		return root == null;
+	}
+	
+	public boolean insertNode(Node node) {	//inserts node, returns true if successful
+														//we might want this to take a key as argument -- need to consider our goals
+
+		size++;
+		return true;
+	}
+	
+	public boolean removeNode(Node node){    // removes node, returns true if successful;
+		
+		size--;
+		return true;
+	}
+	
+	
 	
 	//Add more functions as  you see fit.
 }
