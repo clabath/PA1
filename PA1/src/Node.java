@@ -155,6 +155,19 @@ public class Node {            //the node represents an endpoint
 			throw new IllegalArgumentException("setColor ONLY ACCEPTS 0 AND 1 AS ARGUMENTS");
 	}
 	
+	/**
+	 * Creates a new nil node with p = -1, key = -1, val = 0, maxval = 0 and emax = key of -1
+	 * @return
+	 */
+	public static Node createNILNode() {
+		Node nil = new Node(-1,-1);
+		nil.setColor(1);
+		nil.getVal();
+		nil.getMaxVal();
+		nil.getEmax();
+		return nil;
+	}
+	
 	
 	
 	

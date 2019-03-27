@@ -14,7 +14,9 @@ public class RBTree {
 	 * RB Tree constructor. It initializes nil node as well.
 	 */
 	public RBTree() {
-		root = null;
+		
+		nil = Node.createNILNode();
+		root = nil;
 		size = 0;
 							//have to initialize nil node --- return later
 	}
@@ -32,10 +34,6 @@ public class RBTree {
 	 * @return
 	 */
 	public Node getNILNode() {
-		nil = new Node(-1,-1);
-		nil.setColor(1);
-		nil.getVal();
-		nil.getMaxVal();
 		return nil;
 	}
 	
