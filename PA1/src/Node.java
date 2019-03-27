@@ -16,8 +16,9 @@ public class Node {            //the node represents an endpoint
 	int val;                   //sum of p-values of nodes in the subtree rooted at v (including v)
 	int maxval;                //TODO maximum value obtained by s(leftmost, i) for leftmost <= i <= rightmost TALK TO ME ABOUT THIS I HAVE CONCERNS
 	Endpoint emax;                  //the key (endpoint) that maximizes s(leftmost, i) for leftmost <= i <= rightmost 
+	boolean nil;
 	
-	public Node(int key, int p) //TODO this is probably not right, just setting something up right now
+	public Node(int key, int p, boolean nil) //TODO this is probably not right, just setting something up right now
 	{
 		this.key = new Endpoint(key);
 		this.p = p;
@@ -67,6 +68,11 @@ public class Node {            //the node represents an endpoint
 	 * @return
 	 */
 	public int getVal() {
+		if(nil) {
+			val = 0;
+		} else {
+			val = left.val + p + right.val;
+		}
 		return val;
 	}
 	
