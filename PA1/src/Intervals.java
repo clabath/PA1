@@ -34,8 +34,8 @@ public class Intervals {
 	 */
 	//as of right now the ID is equal to the index + 1
 	void intervalInsert(int a, int b) {
-		getRBTree().insertNode(new Node(a, 1));
-		getRBTree().insertNode(new Node(b, -1));
+		getRBTree().insertNode(new Node(a, 1, nextID));
+		getRBTree().insertNode(new Node(b, -1, nextID));
 		nextID++;
 	}
 	
@@ -92,9 +92,9 @@ public class Intervals {
 //		}
 //		System.out.println("POM is: "+ intv.findPOM()); //Should return 3.
 		RBTree rbt = new RBTree();
-		Node left = new Node(0,1);
-		Node right = new Node(3,1);
-		Node node = new Node(1,1);
+		Node left = new Node(0,1, 1);
+		Node right = new Node(3,1, 1);
+		Node node = new Node(1,1, 1);
 		left.setLeft(rbt.getNILNode());
 		left.setRight(rbt.getNILNode());
 		left.setParent(node);

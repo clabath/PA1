@@ -15,12 +15,13 @@ public class Node {            //the node represents an endpoint
 	private int val;                   //sum of p-values of nodes in the subtree rooted at v (including v)
 	private int maxval;                //TODO maximum value obtained by s(leftmost, i) for leftmost <= i <= rightmost TALK TO ME ABOUT THIS I HAVE CONCERNS
 	private Endpoint emax;                  //the key (endpoint) that maximizes s(leftmost, i) for leftmost <= i <= rightmost 
-
+	private int ID;
 	
-	public Node(int key, int p) //TODO this is probably not right, just setting something up right now
+	public Node(int key, int p, int ID) //TODO this is probably not right, just setting something up right now
 	{
 		this.key = new Endpoint(key);
 		this.p = p;
+		this.ID = ID;
 	}
 	/**
 	 * Returns the parent of this node.
