@@ -182,7 +182,7 @@ public class Node {            //the node represents an endpoint
 	 * @return 
 	 */
 	public static Node createNILNode() {
-		Node nil = new Node(-1,-1);
+		Node nil = new Node(-1,-1,0);
 		nil.setColor(1);
 		nil.getVal();
 		nil.getMaxVal();

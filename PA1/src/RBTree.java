@@ -55,16 +55,84 @@ public class RBTree {
 	}
 	
 	public boolean isEmpty() {
-		return root == null;
+		return root == nil;
 	}
 	
-	public boolean insertNode(Node node) {	//inserts node, returns true if successful
-														//we might want this to take a key as argument -- need to consider our goals
-	
-		
-		
+	/**
+	 * inserts the new Node given in parameter to the RBTree then calls insertFixup to correct tree
+	 * @param node
+	 */
+	public void insertNode(Node node) {	
+		Node x = root;
+		Node y = nil;
+		while(x != nil) {
+			y = x;
+			if(node.getKey() < x.getKey()) {
+				x = x.getLeft();
+			} else {
+				x = x.getRight();
+			}
+		}
+		node.setParent(y);
+		if(y==nil) {
+			root = node;
+		} else if (node.getKey() < y.getKey()) {
+			y.setLeft(node);
+		} else {
+			y.setRight(node);
+		}
+		node.setLeft(nil);
+		node.setRight(nil);
+		node.setColor(0);
 		size++;
-		return true;
+		insertFixup(node);
+		return;
+	}
+	
+	/**
+	 * corrects RBTree after insert by rotating and changing colors
+	 * @param node
+	 */
+	public void insertFixup(Node node) {
+		while (node.getParent().getColor() == 0) {
+			if(node.getParent() == node.getParent().getParent().getLeft()) {
+				Node y = node.getParent().getParent().getRight();
+				if(y.getColor() == 0) {
+					node.getParent().setColor(1);
+					y.setColor(1);
+					node.getParent().getParent().setColor(0);
+					node = node.getParent().getParent();
+				} else {
+					if(node == node.getParent().getRight()) {
+						node = node.getParent();
+						leftRotate(node);
+					}
+					node.getParent().setColor(1);
+					node.getParent().getParent().setColor(0);
+					rightRotate(node.getParent().getParent());
+				}
+			} else {
+				if(node.getParent() == node.getParent().getParent().getRight()) {
+					Node y = node.getParent().getParent().getLeft();
+					if(y.getColor() == 0) {
+						node.getParent().setColor(1);
+						y.setColor(1);
+						node.getParent().getParent().setColor(0);
+						node = node.getParent().getParent();
+					} else {
+						if(node == node.getParent().getLeft()) {
+							node = node.getParent();
+							leftRotate(node);
+						}
+						node.getParent().setColor(1);
+						node.getParent().getParent().setColor(0);
+						rightRotate(node.getParent().getParent());
+					}
+				}
+			}
+		}
+		root.setColor(1);
+		return;
 	}
 	
 	public boolean removeNode(Node node){    // removes node, returns true if successful; //Can probably remove this
@@ -74,7 +142,7 @@ public class RBTree {
 	}
 	
 	
-	private void leftrotato(Node x)
+	private void leftRotate(Node x)
 	{
 		Node y = x.getRight();
 		x.setRight(y.getLeft());
@@ -90,7 +158,7 @@ public class RBTree {
 		y.setLeft(x);
 		x.setParent(y);
 	}
-	private void rightrotato(Node x)
+	private void rightRotate(Node x)
 	{
 		Node y = x.getLeft();
 		x.setLeft(y.getRight());
