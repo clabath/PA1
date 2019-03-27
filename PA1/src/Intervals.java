@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Intervals {
 	//private int ID = 0; If deletion is done, this could be used to keep track of edpoints
 	//                    for the same interval.
-	
+	int nextID = 1;
 	/**
 	 * Constructor with no parameters.
 	 */
@@ -34,10 +34,9 @@ public class Intervals {
 	 */
 	//as of right now the ID is equal to the index + 1
 	void intervalInsert(int a, int b) {
-		//why should this run in O(logn) timne what am i missing
-		//also this is a dynamic array so every time I update it it is copying the whole array O(n)
-		//oh shit i'm a stupid this is where we use the BST
-		//i'm going to bed
+		getRBTree().insertNode(new Node(a, 1));
+		getRBTree().insertNode(new Node(b, -1));
+		nextID++;
 	}
 	
 	/**
@@ -53,7 +52,6 @@ public class Intervals {
 	 * @return
 	 */
 	boolean intervalDelete(int intervalID) {
-		//TODO: Complete it as needed (This is optional so you can leave it as it is)
 		return false;
 	}
 	
