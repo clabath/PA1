@@ -16,12 +16,15 @@ public class Node {            //the node represents an endpoint
 	int val;                   //sum of p-values of nodes in the subtree rooted at v (including v)
 	int maxval;                //TODO maximum value obtained by s(leftmost, i) for leftmost <= i <= rightmost TALK TO ME ABOUT THIS I HAVE CONCERNS
 	Endpoint emax;                  //the key (endpoint) that maximizes s(leftmost, i) for leftmost <= i <= rightmost 
-
+	int ID;
 	
-	public Node(int key, int p) //TODO this is probably not right, just setting something up right now
+	public Node(int key, int p, int ID) //TODO this is probably not right, just setting something up right now
 	{
+		if(p != -1 || p!= 1)
+			throw new IllegalArgumentException("yo what are you doing p has to be 1 or -1");
 		this.key = new Endpoint(key);
 		this.p = p;
+		this.ID = ID; 
 	}
 	/**
 	 * Returns the parent of this node.
@@ -160,14 +163,13 @@ public class Node {            //the node represents an endpoint
 	 * @return
 	 */
 	public static Node createNILNode() {
-		Node nil = new Node(-1,-1);
+		Node nil = new Node(-1,-1, 0);
 		nil.setColor(1);
 		nil.getVal();
 		nil.getMaxVal();
 		nil.getEmax();
 		return nil;
 	}
-	
 	
 	
 	

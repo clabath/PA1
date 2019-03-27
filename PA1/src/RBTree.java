@@ -60,7 +60,9 @@ public class RBTree {
 	
 	public boolean insertNode(Node node) {	//inserts node, returns true if successful
 														//we might want this to take a key as argument -- need to consider our goals
-
+	
+		
+		
 		size++;
 		return true;
 	}
@@ -72,6 +74,37 @@ public class RBTree {
 	}
 	
 	
-	
+	private void leftrotato(Node x)
+	{
+		Node y = x.getRight();
+		x.setRight(y.getLeft());
+		if(y.getLeft() != null)
+			y.getLeft().setParent(x);
+		y.setParent(x.getParent());
+		if(x.getParent() == null)
+			root = y; 
+		else if (x == x.getParent().getLeft())
+			x.getParent().setLeft(y);
+		else 
+			x.getParent().setRight(y);
+		y.setLeft(x);
+		x.setParent(y);
+	}
+	private void rightrotato(Node x)
+	{
+		Node y = x.getLeft();
+		x.setLeft(y.getRight());
+		if(y.getRight() != null)
+			y.getRight().setParent(x);
+		y.setParent(x.getParent());
+		if(x.getParent() == null)
+			root = y; 
+		else if (x == x.getParent().getRight())
+			x.getParent().setRight(y);
+		else 
+			x.getParent().setLeft(y);
+		y.setRight(x);
+		x.setParent(y);
+	}
 	//Add more functions as  you see fit.
 }
