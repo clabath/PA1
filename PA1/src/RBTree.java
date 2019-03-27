@@ -18,11 +18,10 @@ public class RBTree {
 		nil = Node.createNILNode();
 		root = nil;
 		size = 0;
-							//have to initialize nil node --- return later
 	}
 	
 	/**
-	 * Returns the root of teh tree.
+	 * Returns the root of the tree.
 	 * @return
 	 */
 	public Node getRoot() {
