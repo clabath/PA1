@@ -18,4 +18,4 @@ public class Endpoint {
 		//TODO: Modify it accordingly.
 		return 1;
 	}
-}
+} // im so hot
