@@ -34,8 +34,8 @@ public class Intervals {
 	 */
 	//as of right now the ID is equal to the index + 1
 	void intervalInsert(int a, int b) {
-		getRBTree().insertNode(new Node(a, 1, nextID));
-		getRBTree().insertNode(new Node(b, -1, nextID));
+		getRBTree().insertNode(new Node(a, 1));
+		getRBTree().insertNode(new Node(b, -1));
 		nextID++;
 	}
 	
@@ -92,9 +92,9 @@ public class Intervals {
 //		}
 //		System.out.println("POM is: "+ intv.findPOM()); //Should return 3.
 		RBTree rbt = new RBTree();
-		Node left = new Node(0,1, 1);
-		Node right = new Node(3,1, 1);
-		Node node = new Node(1,1, 1);
+		Node left = new Node(0,1);
+		Node right = new Node(3,1);
+		Node node = new Node(1,1);
 		left.setLeft(rbt.getNILNode());
 		left.setRight(rbt.getNILNode());
 		left.setParent(node);
@@ -113,8 +113,8 @@ public class Intervals {
 		node.getVal();
 		node.getMaxVal();
 		node.getEmax();
-		System.out.println("left val is:" + left.val + "   left maxval is:" + left.maxval + "   left emax is at key:" + left.emax.getValue());
-		System.out.println("right val is:" + right.val + "   right maxval is:" + right.maxval + "   right emax is at key:" + right.emax.getValue());
-		System.out.println("node val is:" + node.val + "   node maxval is:" + node.maxval + "   node emax is at key:" + node.emax.getValue());
+		System.out.println("left val is:" + left.getVal() + "   left maxval is:" + left.getMaxVal() + "   left emax is at key:" + left.getEmax().getValue());
+		System.out.println("right val is:" + right.getVal() + "   right maxval is:" + right.getMaxVal() + "   right emax is at key:" + right.getEmax().getValue());
+		System.out.println("node val is:" + node.getVal() + "   node maxval is:" + node.getMaxVal() + "   node emax is at key:" + node.getEmax().getValue());
 	}
 }

@@ -8,7 +8,7 @@
  */
 public class RBTree {
 	private Node root; 
-	private Node nil; //this is the nil node, don't know how to use it yet
+	private Node nil;
 	private int size, height; //variables to store the size and the height of the tree
 	/**
 	 * RB Tree constructor. It initializes nil node as well.
@@ -42,7 +42,7 @@ public class RBTree {
 	 * @return 
 	 */
 	public int getSize() {
-		return size;
+		 return size;
 	}
 	
 	
