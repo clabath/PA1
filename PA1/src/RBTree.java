@@ -56,7 +56,7 @@ public class RBTree {
 	 * @return
 	 */
 	public int getHeight() {
-		height = findHeight(root);
+		height = findHeight(root) -1;
 		return height;
 	}
 
@@ -68,7 +68,7 @@ public class RBTree {
 			int l = findHeight(node.getLeft());
 			int r = findHeight(node.getRight());
 			// Find which height is greatest and return
-			return Math.max(l, r);
+			return Math.max(l, r) + 1;
 		}
 	}
 	
