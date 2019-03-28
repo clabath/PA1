@@ -93,6 +93,7 @@ public class Intervals {
 			intv.intervalInsert(points[i][0], points[i][1]);
 		}
 		System.out.println("POM is: "+ intv.findPOM()); //Should return 3.
-		intv.rbt.getHeight();
+		System.out.println("Sorted by Key, inorder traversal");
+		intv.rbt.inorderPrint();;
 	}
 }

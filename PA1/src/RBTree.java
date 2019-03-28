@@ -66,11 +66,24 @@ public class RBTree {
 			return 0;
 		else {
 			int l = findHeight(node.getLeft());
-			if(node.getKey() > -1)
-			System.out.print(node.getKey() + " ");
 			int r = findHeight(node.getRight());
 			// Find which height is greatest and return
-			return Math.max(l, r) + 1;
+			return Math.max(l, r);
+		}
+	}
+	
+	public void inorderPrint() {
+		inorder(root);
+	}
+	
+	private void inorder(Node node) {
+		if (node == null)
+			return;
+		else {
+			inorder(node.getLeft());
+			if(node.getKey() > -1)
+			System.out.println("Key: " + node.getKey() + " ,Color:" + node.getColor());
+			inorder(node.getRight());
 		}
 	}
 
