@@ -106,9 +106,9 @@ public class Node {            //the node represents an endpoint
 	public Endpoint getEmax() {
 		if (getKey() < 0) {
 			emax = key;
-		} else if(Math.max(left.maxval, Math.max(left.maxval + p, left.maxval + p + right.maxval)) == left.maxval) {
+		} else if(Math.max(left.maxval, Math.max(left.val + p, left.val + p + right.maxval)) == left.maxval) {
 			emax = left.key;
-		} else if (Math.max(left.maxval, Math.max(left.maxval + p, left.maxval + p + right.maxval)) == (left.maxval + p)){
+		} else if (Math.max(left.maxval, Math.max(left.val + p, left.val + p + right.maxval)) == (left.val + p)){
 			emax = key;
 		} else {
 			emax = right.key;
