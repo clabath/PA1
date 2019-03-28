@@ -121,6 +121,7 @@ public class RBTree {
 		node.setColor(0);
 		size++;
 		insertFixup(node);
+		updateVals(node);
 	}
 
 	/**
@@ -209,6 +210,16 @@ public class RBTree {
 			x.getParent().setLeft(y);
 		y.setRight(x);
 		x.setParent(y);
+	}
+	
+	public void updateVals(Node node) {
+		node.getVal();
+		node.getMaxVal();
+		node.getEmax();
+		if(node.getParent() != nil) {
+			updateVals(node.getParent());
+		}
+		return;
 	}
 	// Add more functions as you see fit.
 }

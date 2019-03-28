@@ -63,8 +63,7 @@ public class Intervals {
 	 * @return
 	 */
 	int findPOM() {
-		//TODO: Modify it accordingly.
-		return 0;
+		return rbt.getRoot().getEmax().getValue();
 	}
 	
 	/**
@@ -95,6 +94,6 @@ public class Intervals {
 		System.out.println("POM is: "+ intv.findPOM()); //Should return 3.
 		System.out.println("Height: "  + intv.rbt.getHeight());
 		System.out.println("Sorted by Key, inorder traversal");
-		intv.rbt.inorderPrint();;
+		intv.rbt.inorderPrint();
 	}
 }
