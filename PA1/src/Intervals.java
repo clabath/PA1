@@ -84,7 +84,7 @@ public class Intervals {
 	 * @param args
 	 */
 	public static void main(String [] args) {
-		int points[][] = {{0, 4}, {1, 6}, {3, 9}, {7, 11}}; //{{0, 1}, {1, 2}, {2, 4}, {3, 4}} fails
+		int points[][] =  {{0, 1}, {1, 2}, {1, 4}, {2, 4}};//{{0, 4}, {1, 6}, {3, 9}, {7, 11}}; //{{0, 1}, {1, 2}, {2, 4}, {3, 4}} fails
 		
 		Intervals intv = new Intervals();
 		

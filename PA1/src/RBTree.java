@@ -254,6 +254,8 @@ public class RBTree {
 
 		y.setLeft(x);
 		x.setParent(y);
+		
+		updateVals(x);
 	}
 
 	private void rightRotate(Node x) {
@@ -270,16 +272,22 @@ public class RBTree {
 			x.getParent().setLeft(y);
 		y.setRight(x);
 		x.setParent(y);
+		
+		updateVals(x);
 	}
 
 	public void updateVals(Node node) {
-		node.getVal();
-		node.getMaxVal();
-		node.getEmax();
+		updateSingle(node);
 		if (node.getParent() != nil) {
 			updateVals(node.getParent());
 		}
 		return;
+	}
+	
+	public void updateSingle(Node node) {
+		node.getVal();
+		node.getMaxVal();
+		node.getEmax();
 	}
 	// Add more functions as you see fit.
 }
