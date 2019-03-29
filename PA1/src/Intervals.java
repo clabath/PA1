@@ -68,7 +68,9 @@ public class Intervals {
 	 * @return
 	 */
 	boolean intervalDelete(int intervalID) {
-		return false;
+		
+		
+		return true;
 	}
 	
 	/**
