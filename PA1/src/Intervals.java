@@ -17,10 +17,10 @@ public class Intervals {
 	int nextID;
 	class Tuple{
 		
-		int a;
-		int b;
+		Node a;
+		Node b;
 		
-		Tuple(int a, int b){
+		Tuple(Node a, Node b){
 			this.a = a;
 			this.b = b;
 		}
@@ -31,7 +31,6 @@ public class Intervals {
 	 * Constructor with no parameters.
 	 */
 	public Intervals() {
-		//TODO
 		rbt = new RBTree();
 	}
 	
@@ -50,9 +49,11 @@ public class Intervals {
 	 */
 	//as of right now the ID is equal to the index + 1
 	void intervalInsert(int a, int b) {
-		getRBTree().insertNode(new Node(a, 1, nextID));
-		getRBTree().insertNode(new Node(b, -1, nextID));
-		intervals.add(new Tuple(a,b));
+		Node left = new Node(a, 1, nextID);
+		Node right = new Node(b, -1, nextID);
+		getRBTree().insertNode(left);
+		getRBTree().insertNode(right);
+		intervals.add(new Tuple(left,right));
 	}
 	
 	/**
@@ -68,8 +69,9 @@ public class Intervals {
 	 * @return
 	 */
 	boolean intervalDelete(int intervalID) {
-		
-		
+		Tuple tupleNode = intervals.get(intervalID);
+		rbt.removeNode(tupleNode.a);
+		rbt.removeNode(tupleNode.b);
 		return true;
 	}
 	
@@ -99,11 +101,11 @@ public class Intervals {
 	 * @param args
 	 */
 	public static void main(String [] args) {
-		int points[][] =  new int[100][2];
-		for(int i = 0; i<100; i++)
+		int points[][] =  new int[10][2];
+		for(int i = 0; i<10; i++)
 			{
 				points[i][0] = i;
-				points [i][1] = 100;
+				points [i][1] = 10;
 			}
 		
 		
@@ -112,7 +114,11 @@ public class Intervals {
 		for(int i=0; i<points.length; i++) {
 			System.out.println("Inserting: "+ Arrays.toString(points[i]));
 			intv.intervalInsert(points[i][0], points[i][1]);
+
 		}
+		
+		intv.intervalDelete(9);
+		intv.intervalDelete(8);
 		System.out.println("POM is: "+ intv.findPOM()); //Should return 3.
 		System.out.println("Height: "  + intv.rbt.getHeight());
 		System.out.println("Valid Colors? : " +intv.rbt.checkValidColors());
