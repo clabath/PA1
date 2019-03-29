@@ -237,6 +237,7 @@ public class RBTree {
 		}
 		v.setParent(u.getParent());
 	}
+	
 	public void removeNode(Node node) { // removes node, returns true if successful; //Can probably remove this
 		Node y = node;
 		Node x;

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -11,8 +12,20 @@ import java.util.Arrays;
 public class Intervals {
 	//private int ID = 0; If deletion is done, this could be used to keep track of edpoints
 	//                    for the same interval.
-	int nextID = 1;
 	RBTree rbt;
+	ArrayList<Tuple> intervals = new ArrayList<>();
+	int nextID;
+	class Tuple{
+		
+		int a;
+		int b;
+		
+		Tuple(int a, int b){
+			this.a = a;
+			this.b = b;
+		}
+		
+	}
 	
 	/**
 	 * Constructor with no parameters.
@@ -39,7 +52,7 @@ public class Intervals {
 	void intervalInsert(int a, int b) {
 		getRBTree().insertNode(new Node(a, 1, nextID));
 		getRBTree().insertNode(new Node(b, -1, nextID));
-		nextID++;
+		intervals.add(new Tuple(a,b));
 	}
 	
 	/**
