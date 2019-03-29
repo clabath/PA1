@@ -56,21 +56,10 @@ public class RBTree {
 	 * @return
 	 */
 	public int getHeight() {
-		height = findHeight(root) - 1;
 		return height;
 	}
 
 	// Naive method to find height of the tree based on recursion
-	private int findHeight(Node node) {
-		if (node == null)
-			return 0;
-		else {
-			int l = findHeight(node.getLeft());
-			int r = findHeight(node.getRight());
-			// Find which height is greatest and return
-			return Math.max(l, r) + 1;
-		}
-	}
 
 	public void inorderPrint() {
 		inorder(root);
@@ -162,6 +151,7 @@ public class RBTree {
 	public void insertNode(Node node) {
 		Node x = root;
 		Node y = nil;
+		int h = 0;
 		while (x != nil) {
 			y = x;
 			if (node.getKey() < x.getKey()) {
@@ -169,6 +159,7 @@ public class RBTree {
 			} else {
 				x = x.getRight();
 			}
+			h++;
 		}
 		node.setParent(y);
 		if (y == nil) {
@@ -182,6 +173,7 @@ public class RBTree {
 		node.setRight(nil);
 		node.setColor(0);
 		size++;
+		height = Math.max(h, height);
 		insertFixup(node);
 		updateVals(node);
 	}
@@ -231,12 +223,135 @@ public class RBTree {
 		return;
 	}
 
-	public boolean removeNode(Node node) { // removes node, returns true if successful; //Can probably remove this
-		// Todo:
-		size--;
-		return true;
+	private void RBTransplant(Node u, Node v)
+	{
+		if(u.getParent() == nil)
+			root = v;
+		else if(u == u.getParent().getLeft())
+		{
+			u.getParent().setLeft(v);
+		}
+		else if(u == u.getParent().getRight())
+		{
+			u.getParent().setRight(v);
+		}
+		v.setParent(u.getParent());
+	}
+	public void removeNode(Node node) { // removes node, returns true if successful; //Can probably remove this
+		Node y = node;
+		Node x;
+		int yOrigColor = y.getColor();
+		if(node.getLeft() == nil)
+		{
+			x = node.getRight();
+			RBTransplant(node, node.getRight());
+		}
+		else if (node.getRight() == nil)
+		{
+			x = node.getLeft();
+			RBTransplant(node, node.getLeft());
+		}
+		else
+		{
+			y = node.getRight();
+			while (y.getLeft() != nil)
+				y = y.getLeft();
+			yOrigColor = y.getColor();
+			x = y.getRight();
+			if(y.getParent() == node)
+			{
+				x.setParent(y);
+			}
+			else 
+			{
+				 RBTransplant(y, y.getRight());
+				 y.setRight(node.getRight());
+				 y.getRight().setParent(y);
+			}
+			
+			RBTransplant(node, y);
+			y.setLeft(node.getLeft());
+			y.getLeft().setParent(y);
+			y.setColor(node.getColor());
+		}
+		if(yOrigColor == 1)
+		{
+			RBDeleteFixup(x);
+		}
 	}
 
+	private void RBDeleteFixup(Node x)
+	{
+		Node w;
+		while(x != root && x.getColor()== 1)
+		{
+			if(x == x.getParent().getLeft())
+			{
+				w = x.getParent().getRight();
+				if(w.getColor() == 0)
+				{
+					w.setColor(1);
+					x.getParent().setColor(0);
+					leftRotate(x.getParent());
+					w = x.getParent().getRight();
+				}
+				if(w.getLeft().getColor() == 1 && w.getRight().getColor() == 1)
+				{
+					w.setColor(0);
+					x = x.getParent();
+				}
+				else
+				{
+					if(w.getRight().getColor() == 1)
+					{
+						w.getLeft().setColor(1);
+						w.setColor(0);
+						rightRotate(w);
+						w = x.getParent().getRight();
+					}
+					w.setColor(x.getParent().getColor());
+					x.getParent().setColor(1);
+					w.getRight().setColor(1);
+					leftRotate(x.getParent());
+					x = root;
+				}
+			}
+			else
+			{
+				w = x.getParent().getLeft();
+				if(w.getColor() == 0)
+				{
+					w.setColor(1);
+					x.getParent().setColor(0);
+					rightRotate(x.getParent());
+					w = x.getParent().getLeft();
+				}
+				if(w.getRight().getColor() == 1 && w.getLeft().getColor() == 1)
+				{
+					w.setColor(0);
+					x = x.getParent();
+				}
+				else
+				{
+					if(w.getLeft().getColor() == 1)
+					{
+						w.getRight().setColor(1);
+						w.setColor(0);
+						leftRotate(w);
+						w = x.getParent().getLeft();
+					}
+					w.setColor(x.getParent().getColor());
+					x.getParent().setColor(1);
+					w.getLeft().setColor(1);
+					rightRotate(x.getParent());
+					x = root;
+				}
+
+			}
+				
+			
+		}
+	}
 	private void leftRotate(Node x) {
 		Node y = x.getRight();
 		x.setRight(y.getLeft());
