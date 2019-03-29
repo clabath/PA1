@@ -56,7 +56,7 @@ public class RBTree {
 	 * @return
 	 */
 	public int getHeight() {
-		height = findHeight(root) -1;
+		height = findHeight(root) - 1;
 		return height;
 	}
 
@@ -71,24 +71,86 @@ public class RBTree {
 			return Math.max(l, r) + 1;
 		}
 	}
-	
+
 	public void inorderPrint() {
 		inorder(root);
 	}
-	
+
+	public void preorderPrint() {
+		preorder(root);
+	}
+
+	public void postorderPrint() {
+		postorder(root);
+	}
+
 	private void inorder(Node node) {
 		if (node == null)
 			return;
 		else {
 			inorder(node.getLeft());
-			if(node.getKey() > -1)
-			System.out.println("Key: " + node.getKey() + " ,Color:" + node.getColor());
+			if (node.getKey() > -1)
+				System.out.println(
+						"Key: " + node.getKey() + " ,Color:" + node.getColor() + " Emax: " + node.getEmax().getValue());
 			inorder(node.getRight());
+		}
+	}
+
+	private void preorder(Node node) {
+		if (node == null)
+			return;
+		else {
+			if (node.getKey() > -1) {
+				System.out.print("Key: " + node.getKey());
+				if (node.getColor() == 0) {
+					System.out.println(" Color: Red");
+				} else {
+					System.out.println(" Color: Black");
+				}
+			}
+
+			preorder(node.getLeft());
+			preorder(node.getRight());
+		}
+	}
+
+	private void postorder(Node node) {
+		if (node == null)
+			return;
+		else {
+
+			postorder(node.getLeft());
+			postorder(node.getRight());
+
+			if (node.getKey() > -1) {
+				System.out.print("Key: " + node.getKey());
+				if (node.getColor() == 0) {
+					System.out.println(" Color: Red");
+				} else {
+					System.out.println(" Color: Black");
+				}
+			}
 		}
 	}
 
 	public boolean isEmpty() {
 		return root == nil;
+	}
+	
+	public boolean checkValidColors() {
+		return checkColors(root);
+	}
+	private boolean checkColors(Node node) {
+		if (node.isNil()) {
+			return true;
+		} else {
+			boolean l = checkColors(node.getLeft());
+			if(node.getColor() == 0 && ( node.getLeft().getColor() == 0 || node.getRight().getColor() == 0)){
+				return false;
+			}
+			boolean r = checkColors(node.getRight());
+			return l && r;
+		}
 	}
 
 	/**
@@ -147,16 +209,14 @@ public class RBTree {
 					node.getParent().getParent().setColor(0);
 					rightRotate(node.getParent().getParent());
 				}
-			} 
-			else {
+			} else {
 				Node y = node.getParent().getParent().getLeft();
 				if (y.getColor() == 0) {
 					node.getParent().setColor(1);
 					y.setColor(1);
 					node.getParent().getParent().setColor(0);
 					node = node.getParent().getParent();
-				} 
-				else {
+				} else {
 					if (node == node.getParent().getLeft()) {
 						node = node.getParent();
 						rightRotate(node);
@@ -182,7 +242,7 @@ public class RBTree {
 		x.setRight(y.getLeft());
 		if (y.getLeft() != nil)
 			y.getLeft().setParent(x);
-		
+
 		y.setParent(x.getParent());
 
 		if (x.getParent() == nil)
@@ -211,12 +271,12 @@ public class RBTree {
 		y.setRight(x);
 		x.setParent(y);
 	}
-	
+
 	public void updateVals(Node node) {
 		node.getVal();
 		node.getMaxVal();
 		node.getEmax();
-		if(node.getParent() != nil) {
+		if (node.getParent() != nil) {
 			updateVals(node.getParent());
 		}
 		return;

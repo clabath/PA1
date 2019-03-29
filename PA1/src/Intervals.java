@@ -84,7 +84,8 @@ public class Intervals {
 	 * @param args
 	 */
 	public static void main(String [] args) {
-		int points[][] = {{0, 4}, {1, 6}, {3, 9}, {7, 11}};
+		int points[][] = {{0, 4}, {1, 6}, {3, 9}, {7, 11}}; //{{0, 1}, {1, 2}, {2, 4}, {3, 4}} fails
+		
 		Intervals intv = new Intervals();
 		
 		for(int i=0; i<points.length; i++) {
@@ -93,7 +94,12 @@ public class Intervals {
 		}
 		System.out.println("POM is: "+ intv.findPOM()); //Should return 3.
 		System.out.println("Height: "  + intv.rbt.getHeight());
-		System.out.println("Sorted by Key, inorder traversal");
+		System.out.println("Valid Colors? : " +intv.rbt.checkValidColors());
+		System.out.println("Sorted by Key, inorder");
 		intv.rbt.inorderPrint();
+//		System.out.println("Sorted by key, preorder");
+//		intv.rbt.preorderPrint();
+//		System.out.println("Sorted by Key, postorder");
+//		intv.rbt.postorderPrint();
 	}
 }
