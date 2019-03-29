@@ -91,7 +91,7 @@ public class RBTree {
 			inorder(node.getLeft());
 			if (node.getKey() > -1)
 				System.out.println(
-						"Key: " + node.getKey() + " ,Color:" + node.getColor() + " Emax: " + node.getEmax().getValue());
+						"Key: " + node.getKey() + " ,Val:" + node.getVal() + " Emax: " + node.getEmax().getValue());
 			inorder(node.getRight());
 		}
 	}
